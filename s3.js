@@ -21,7 +21,6 @@ function uploadFile(file) {
             Bucket: bucketName,
             Body: filestream,
             Key: file.filename,
-            ACL:'public-read'
         }
 
         return s3.upload(uploadParams).promise()
@@ -38,7 +37,6 @@ function getFileStream(fileKey) {
     const downloadParams = {
         Key: fileKey,
         Bucket: bucketName,
-        ACL: 'public-read'
     }
 
     return s3.getObject(downloadParams).createReadStream()
