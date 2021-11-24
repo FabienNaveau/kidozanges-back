@@ -43,7 +43,9 @@ const userController = {
             // verifying if email is in good format
             if (!validate(email)) errors.push("L'adresse mail renseignée n'est pas correcte.");
             //checkyng nickname availability
-            if (result.rows[0].nickname === nickname) errors.push("Ce pseudo est déjà utilisé!")
+            const users= await userDataMapper.getAllUsers(); 
+            const user= users.rows.find(elm =>elm.nickname ===nickname);
+            if (user) errors.push("Ce pseudo est déjà utilisé!")
             
 
             // if the errors array isn't empty we push all errors
