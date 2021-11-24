@@ -1,5 +1,4 @@
-const activityDataMapper = require("../datamappers/activityDataMapper");
-const userDataMapper = require("../datamappers/userDataMapper");
+
 const adminDataMapper = require("../datamappers/adminDataMapper");
 
 const adminController = {
@@ -8,10 +7,6 @@ const adminController = {
         try {
             const pendingActivities = await adminDataMapper.getPendingActivities();
             const reportedComments = await adminDataMapper.getReportedComments();
-<<<<<<< HEAD
-=======
-
->>>>>>> f3542192df6698a0f011ef09e27c8daf51961684
             res.json({
                 activity: pendingActivities.rows.length > 0 ? pendingActivities.rows : "aucune activité à valider.",
                 comment: reportedComments.rows.length > 0 ? reportedComments.rows : "aucun commentaire signalé."

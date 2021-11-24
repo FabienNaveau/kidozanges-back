@@ -27,7 +27,6 @@ const activityController = {
         try {
             const result = await activityDataMapper.getOneActivity(activityId);
             const verify = result.rows.find(elm => elm.id == activityId)
-                (verify)
             if (!verify) {
                 return res.sendStatus(404).json({erreur: "404"});
             }
@@ -105,16 +104,10 @@ const activityController = {
                 // we are checking if an user already rates the activity
                 const userRatesActivity = await activityDataMapper.getUserWhoRatesActivity(userId, activityId);
                 const hasRates = userRatesActivity.rows.find(elm => elm.user_id == userId && elm.activity_id == activityId);
-<<<<<<< HEAD
                 // if this user alredy rates this activity we return an error
                 (hasRates)
                 if (hasRates) {
                     res.json({ erreur: "Vous ne pouvez pas noter plusieurs fois cette activité" });
-=======
-                console.log(hasRates)
-                if(hasRates) {
-                    res.json({erreur: "Vous ne pouvez pas noter plusieurs fois cette activité"});
->>>>>>> 1469fe8a3a19e7ca5be58181eb4cb5cdb05388e3
                     throw new Error("Cette activité est déjà notée par cet utilisateur")
                 }
                 // else we insert in database the user who rates this activity with the rate of the activity
@@ -131,11 +124,7 @@ const activityController = {
                 newComment: newComment.rows[0]
             })
         } catch (err) {
-<<<<<<< HEAD
             res.sendStatus(403);
-=======
-            res.sendStatus(403)
->>>>>>> 1469fe8a3a19e7ca5be58181eb4cb5cdb05388e3
         }
     },
 

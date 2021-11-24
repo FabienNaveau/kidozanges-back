@@ -3,7 +3,6 @@ const pool = require("../database");
 const adminDataMapper = {
 
     getPendingActivities: async () => {
-<<<<<<< HEAD
         try {
             const query = "SELECT \"activity\".title, \"activity\".description, \"activity\".zipcode, \"activity\".town, \"activity\".free, \"picture\".url FROM \"activity\" JOIN \"picture\" ON \"activity\".id = \"picture\".activity_id WHERE \"activity\".certify='f' LIMIT 5";
             return await pool.query(query);
@@ -11,10 +10,6 @@ const adminDataMapper = {
             res.sendStatus(500)
         }
         
-=======
-        const query = "SELECT \"activity\".id,\"activity\".title, \"activity\".description, \"activity\".zipcode, \"activity\".town, \"activity\".free, \"picture\".url FROM \"activity\" JOIN \"picture\" ON \"activity\".id = \"picture\".activity_id WHERE \"activity\".certify='f' LIMIT 5";
-        return await pool.query(query);
->>>>>>> f3542192df6698a0f011ef09e27c8daf51961684
     },
 
     getReportedComments: async () => {
